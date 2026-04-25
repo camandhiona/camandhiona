@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cam & Hiona — Private Japan Tours</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --moss:         #4a5c3a;
+    --matcha:       #6b7c5c;
+    --matcha-light: #8fa07a;
+    --cedar:        #9c7a5a;
+    --paper:        #f7f4ee;
+    --hero-bg:      #e8ede0;
+    --muted:        #7a7268;
+    --divider:      #d8d2c4;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--hero-bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle bamboo texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      105deg, transparent 0px, transparent 48px,
+      rgba(107,124,92,0.045) 48px, rgba(107,124,92,0.045) 50px
+    );
+    pointer-events: none;
+  }
+
+  .card {
+    background: var(--paper);
+    border-radius: 12px;
+    border: 1px solid #cdd6c0;
+    padding: 52px 40px 44px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(74,92,58,0.12);
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 40px; right: 40px; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--matcha), transparent);
+    border-radius: 3px;
+  }
+
+  .flag { font-size: 24px; letter-spacing: 6px; margin-bottom: 20px; opacity: 0.6; }
+
+  .photo {
+    width: 100px; height: 124px;
+    object-fit: cover;
+    border-radius: 3px;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 20px rgba(74,92,58,0.15);
+    margin: 0 auto 20px;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300;
+    color: var(--moss); letter-spacing: 1px;
+    line-height: 1.15; margin-bottom: 6px;
+  }
+  h1 em { font-style: italic; color: var(--matcha); }
+
+  .tagline {
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--divider);
+  }
+  .divider span { font-size: 12px; color: var(--matcha-light); opacity: 0.7; }
+
+  .btn-group { display: flex; flex-direction: column; gap: 12px; }
+
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    padding: 16px 24px; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.3px;
+    transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(74,92,58,0.15); }
+
+  .btn-primary {
+    background: var(--moss); color: #e8f0dc;
+  }
+  .btn-secondary {
+    background: #fff; color: var(--moss);
+    border: 1.5px solid #cdd6c0;
+  }
+  .btn-secondary:hover { border-color: var(--matcha); }
+
+  .btn-icon { font-size: 18px; }
+
+  .footer {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid var(--divider);
+    display: flex; justify-content: center; gap: 16px;
+  }
+  .social-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.5px; transition: color 0.2s;
+  }
+  .social-btn:hover { color: var(--moss); }
+
+  .handle {
+    margin-top: 20px;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--divider);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="flag">🇯🇵 🇺🇸</div>
+
+  <img class="photo" src="photo.jpeg" alt="Cam and Hiona" onerror="this.style.display='none'">
+
+  <h1>Cam & <em>Hiona</em></h1>
+  <p class="tagline">Private Japan Tours · Tokyo & Beyond</p>
+
+  <div class="divider"><span>✦</span></div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary" href="tours.html">
+      <span class="btn-icon">🗾</span>
+      View Our Tours & Pricing
+    </a>
+    <a class="btn btn-secondary" href="calendar.html">
+      <span class="btn-icon">📅</span>
+      Check Availability & Book
+    </a>
+  </div>
+
+  <div class="footer">
+    <a class="social-btn" href="https://www.instagram.com/camandhiona" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @camandhiona
+    </a>
+    <a class="social-btn" href="mailto:hionaandcam@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Email Us
+    </a>
+  </div>
+
+  <p class="handle">45K Instagram · 8K TikTok</p>
+</div>
+</body>
+</html>
