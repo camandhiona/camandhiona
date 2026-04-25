@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Japan Tours — Cam & Hiona</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:           #2c2c24;
+    --paper:         #f7f4ee;
+    --stone:         #e8e3d8;
+    --matcha:        #6b7c5c;
+    --matcha-light:  #8fa07a;
+    --moss:          #4a5c3a;
+    --cedar:         #9c7a5a;
+    --muted:         #7a7268;
+    --divider:       #d8d2c4;
+    --hero-bg:       #e8ede0;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--hero-bg);
+    color: var(--ink);
+    text-align: center;
+    padding: 72px 40px 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #cdd6c0;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      105deg, transparent 0px, transparent 48px,
+      rgba(107,124,92,0.045) 48px, rgba(107,124,92,0.045) 50px
+    );
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--matcha), transparent);
+  }
+  .hero-flag { font-size: 26px; letter-spacing: 6px; margin-bottom: 24px; opacity: 0.6; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 8vw, 68px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    color: var(--moss);
+  }
+  .hero h1 em { font-style: italic; color: var(--matcha); }
+  .hero-sub { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--muted); margin-bottom: 44px; }
+  .hero-photo {
+    width: 160px; height: 200px; object-fit: cover;
+    border-radius: 3px; border: 3px solid #fff;
+    box-shadow: 0 4px 24px rgba(74,92,58,0.15);
+    margin: 0 auto 28px; display: block;
+  }
+  .hero-names { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--moss); margin-bottom: 4px; }
+  .hero-location { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
+
+  /* ── LABELS ── */
+  .section-label { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--matcha); margin-bottom: 14px; display: block; }
+
+  /* ── ABOUT ── */
+  .about { max-width: 620px; margin: 0 auto; padding: 64px 32px; text-align: center; }
+  .about p { color: #555048; font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ── DIVIDER ── */
+  .divider { display: flex; align-items: center; gap: 16px; max-width: 680px; margin: 0 auto; padding: 0 32px; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
+  .divider span { font-size: 14px; color: var(--matcha-light); opacity: 0.7; }
+
+  /* ── TOURS ── */
+  .tours-header { text-align: center; padding: 56px 32px 40px; }
+  .tours-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 300; color: var(--moss); letter-spacing: 1px; }
+  .tours-grid { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; display: grid; gap: 20px; }
+
+  .tour-card {
+    background: #fff; border: 1px solid var(--divider); border-radius: 6px;
+    padding: 36px 40px; position: relative;
+    transition: box-shadow 0.25s, transform 0.25s;
+    border-left: 3px solid var(--matcha-light);
+  }
+  .tour-card:hover { box-shadow: 0 8px 32px rgba(74,92,58,0.10); transform: translateY(-2px); }
+  .tour-tag { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; background: #edf0e8; color: var(--matcha); padding: 4px 10px; border-radius: 2px; margin-bottom: 14px; }
+  .tour-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--moss); margin-bottom: 4px; line-height: 1.2; }
+  .tour-duration { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .tour-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--cedar); font-weight: 600; margin-bottom: 6px; }
+  .tour-group { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .best-for { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--divider); }
+  .best-for strong { color: var(--ink); }
+  .experience-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  .experience-list li { font-size: 13.5px; color: #5a5448; display: flex; align-items: flex-start; gap: 8px; }
+  .experience-list li::before { content: '—'; color: var(--matcha-light); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+
+  /* ── SERVICES ── */
+  .services-section { background: #f0f3ea; border-top: 1px solid #cdd6c0; border-bottom: 1px solid #cdd6c0; padding: 64px 32px; }
+  .services-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 300; color: var(--moss); text-align: center; margin-bottom: 40px; }
+  .services-grid { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .service-card { background: #fff; border: 1px solid #cdd6c0; border-radius: 6px; padding: 28px; }
+  .service-icon { font-size: 22px; margin-bottom: 12px; }
+  .service-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 400; margin-bottom: 8px; color: var(--moss); }
+  .service-price { font-size: 14px; color: var(--cedar); margin-bottom: 10px; font-weight: 500; }
+  .service-card ul { list-style: none; }
+  .service-card ul li { font-size: 13px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--stone); }
+  .service-card ul li:last-child { border-bottom: none; }
+
+  /* ── PRICING ── */
+  .pricing-section { max-width: 760px; margin: 0 auto; padding: 64px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  @media (max-width: 560px) { .pricing-section { grid-template-columns: 1fr; gap: 32px; } }
+  .pricing-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--moss); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--divider); }
+  .check-list { list-style: none; }
+  .check-list li { font-size: 13.5px; padding: 7px 0; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--divider); color: #4a4840; }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list .yes::before { content: '✓'; color: var(--matcha); font-weight: 700; }
+  .check-list .no::before  { content: '✕'; color: var(--cedar); font-weight: 700; }
+
+  /* ── DEPOSIT ── */
+  .deposit-section { background: var(--moss); color: var(--paper); }
+  .deposit-inner { max-width: 620px; margin: 0 auto; padding: 60px 32px; text-align: center; }
+  .deposit-inner .section-label { color: #b8c8a0; }
+  .deposit-inner h3 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; margin-bottom: 8px; color: #e8f0dc; }
+  .deposit-percent { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: #c8daa8; line-height: 1; margin: 14px 0 10px; }
+  .deposit-percent span { font-size: 32px; }
+  .deposit-inner p { font-size: 14px; color: rgba(232,240,220,0.7); max-width: 420px; margin: 0 auto 16px; line-height: 1.75; }
+  .deposit-note { font-size: 12px; color: rgba(232,240,220,0.45); font-style: italic; }
+
+  /* ── POLICY ── */
+  .policy-grid { max-width: 760px; margin: 0 auto; padding: 48px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+  .policy-item { padding: 24px 20px; background: #fff; border: 1px solid var(--divider); border-radius: 6px; text-align: center; }
+  .policy-item .policy-icon { font-size: 20px; margin-bottom: 10px; }
+  .policy-item h5 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--matcha); margin-bottom: 6px; }
+  .policy-item p { font-size: 13px; color: #5a5448; }
+
+  /* ── BOOKING ── */
+  .booking { background: #2e3628; color: var(--paper); text-align: center; padding: 80px 32px; position: relative; overflow: hidden; }
+  .booking::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(105deg, transparent 0px, transparent 48px, rgba(255,255,255,0.018) 48px, rgba(255,255,255,0.018) 50px);
+    pointer-events: none;
+  }
+  .booking .section-label { color: #8fa07a; }
+  .booking h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 6vw, 52px); font-weight: 300; margin-bottom: 8px; color: #e8f0dc; }
+  .booking h2 em { font-style: italic; color: #b8c8a0; }
+  .booking-sub { font-size: 13px; color: rgba(232,240,220,0.4); margin-bottom: 36px; }
+  .booking-contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .contact-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s, transform 0.2s; }
+  .contact-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #f77737); color: #fff; }
+  .btn-email { background: rgba(184,200,160,0.12); color: #d4e4b8; border: 1px solid rgba(184,200,160,0.3); }
+  .booking-handle { margin-top: 28px; font-size: 11px; color: rgba(232,240,220,0.25); letter-spacing: 3px; text-transform: uppercase; }
+
+  @media (max-width: 500px) {
+    .tour-card { padding: 28px 24px; }
+    .experience-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-flag">🇯🇵 🇺🇸</div>
+  <h1>Private<br><em>Japan</em> Tours</h1>
+  <p class="hero-sub">Tokyo & Beyond · Hosted by a Local Couple</p>
+  <img class="hero-photo" src="/mnt/user-data/uploads/photo.jpeg" alt="Cam and Hiona" onerror="this.style.display='none'">
+  <p class="hero-names">Cam & Hiona</p>
+  <p class="hero-location">Living in Tokyo · @camandhiona</p>
+</section>
+
+<section class="about">
+  <span class="section-label">About Us</span>
+  <p>We're Cam and Hiona — an American from Maine and a Tokyo local who met when he was traveling Japan. Three years of long-distance later, we're finally living here together.</p>
+  <p>This isn't really a tour. It's more like spending a day with us — seeing Tokyo beyond the typical spots, from both a local and international perspective.</p>
+  <p>Whether it's your first time in Japan or you just want something more personal, we'll make it feel like your kind of day.</p>
+</section>
+
+<div class="divider"><span>✦</span></div>
+
+<div class="tours-header">
+  <span class="section-label">What We Offer</span>
+  <h2>Tour Experiences</h2>
+</div>
+
+<div class="tours-grid">
+  <div class="tour-card">
+    <span class="tour-tag">Tokyo · In-City</span>
+    <h3>Tokyo First-Time Experience</h3>
+    <p class="tour-duration">⏱ 4–6 Hours</p>
+    <p class="tour-price">¥35,000 – ¥40,000</p>
+    <p class="tour-group">Up to 2 people</p>
+    <div class="best-for"><span>Best for</span> <strong>First-time visitors</strong></div>
+    <ul class="experience-list">
+      <li>Famous areas + hidden spots</li>
+      <li>Local food stops</li>
+      <li>City navigation help</li>
+      <li>Cultural insights</li>
+    </ul>
+  </div>
+
+  <div class="tour-card">
+    <span class="tour-tag">Tokyo · Local Life</span>
+    <h3>Hidden Tokyo: Local Life</h3>
+    <p class="tour-duration">⏱ 4 Hours</p>
+    <p class="tour-price">¥35,000</p>
+    <p class="tour-group">Up to 2 people</p>
+    <div class="best-for"><span>Best for</span> <strong>Couples, relaxed travelers</strong></div>
+    <ul class="experience-list">
+      <li>Quiet neighborhoods</li>
+      <li>Hidden cafes</li>
+      <li>Spots we actually go to</li>
+      <li>Slower, personal experience</li>
+    </ul>
+  </div>
+
+  <div class="tour-card">
+    <span class="tour-tag">Day Trip</span>
+    <h3>Kamakura & Enoshima</h3>
+    <p class="tour-duration">⏱ 8 Hours</p>
+    <p class="tour-price">¥60,000</p>
+    <p class="tour-group">Up to 2 people</p>
+    <div class="best-for"><span>Best for</span> <strong>History & coastal scenery lovers</strong></div>
+    <ul class="experience-list">
+      <li>Great Buddha & temples</li>
+      <li>Coastal views</li>
+      <li>Enoshima Island</li>
+      <li>Local food & cafes</li>
+    </ul>
+  </div>
+
+  <div class="tour-card">
+    <span class="tour-tag">Day Trip</span>
+    <h3>Hakone Scenic Day</h3>
+    <p class="tour-duration">⏱ 8 Hours</p>
+    <p class="tour-price">¥70,000</p>
+    <p class="tour-group">Up to 2 people</p>
+    <div class="best-for"><span>Best for</span> <strong>Nature & Mt. Fuji views</strong></div>
+    <ul class="experience-list">
+      <li>Lake Ashi & ropeway</li>
+      <li>Scenic viewpoints</li>
+      <li>Shrines & museums</li>
+      <li>Relaxing nature spots</li>
+    </ul>
+  </div>
+</div>
+
+<section class="services-section">
+  <span class="section-label" style="text-align:center; display:block;">Add-Ons</span>
+  <h2>Additional Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h4>Airport Escort</h4>
+      <p class="service-price">¥15,000 one-way · ¥25,000 round trip</p>
+      <ul>
+        <li>Meet at airport</li>
+        <li>Help with trains & navigation</li>
+        <li>Guide to your hotel</li>
+        <li>Answer any questions</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🗓</div>
+      <h4>Custom Itinerary Planning</h4>
+      <p class="service-price">¥15,000</p>
+      <ul>
+        <li>Personalized Tokyo plan</li>
+        <li>Balanced schedule</li>
+        <li>Food + area recommendations</li>
+        <li>Optional call support</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h4>Reservation Support</h4>
+      <p class="service-price">¥3,000 per request</p>
+      <ul>
+        <li>Restaurant bookings</li>
+        <li>Hard-to-book spots</li>
+        <li>Japanese-only reservations</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div style="text-align:center; padding: 56px 32px 0;">
+    <span class="section-label">Pricing & Details</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,38px); font-weight:300; color:var(--moss);">What's Included</h2>
+  </div>
+  <div class="pricing-section">
+    <div class="pricing-block">
+      <h3>✓ Included</h3>
+      <ul class="check-list">
+        <li class="yes">Private guided experience</li>
+        <li class="yes">Personalized itinerary</li>
+        <li class="yes">Photo / video assistance</li>
+      </ul>
+    </div>
+    <div class="pricing-block">
+      <h3>✕ Not Included</h3>
+      <ul class="check-list">
+        <li class="no">Transportation</li>
+        <li class="no">Food & drinks</li>
+        <li class="no">Entrance fees</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="deposit-section">
+  <div class="deposit-inner">
+    <span class="section-label">Booking Policy</span>
+    <h3>Deposit to Confirm</h3>
+    <div class="deposit-percent">30<span>%</span></div>
+    <p>A 30% non-refundable deposit is required to secure your booking. The remaining balance is due on the day of your tour.</p>
+    <p class="deposit-note">Cancellations made more than 7 days in advance receive a deposit credit toward rebooking.</p>
+  </div>
+</section>
+
+<div class="policy-grid">
+  <div class="policy-item">
+    <div class="policy-icon">👥</div>
+    <h5>Guide Expenses</h5>
+    <p>For tours with both of us, guests cover one guide's transport & food.</p>
+  </div>
+  <div class="policy-item">
+    <div class="policy-icon">⏰</div>
+    <h5>Extensions</h5>
+    <p>¥5,000 per additional hour, agreed in advance.</p>
+  </div>
+  <div class="policy-item">
+    <div class="policy-icon">💬</div>
+    <h5>Flexibility</h5>
+    <p>All tours adapt to your pace, preferences, and interests.</p>
+  </div>
+</div>
+
+<section class="booking">
+  <span class="section-label">Ready to explore?</span>
+  <h2>Let's Plan<br><em>Your Day</em></h2>
+  <p class="booking-sub">Message us on Instagram or send an email to book or ask questions.</p>
+  <div class="booking-contacts">
+    <a class="contact-btn btn-instagram" href="https://www.instagram.com/camandhiona" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @camandhiona
+    </a>
+    <a class="contact-btn btn-email" href="mailto:hionaandcam@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      hionaandcam@gmail.com
+    </a>
+  </div>
+  <p class="booking-handle">45K Instagram · 8K TikTok</p>
+</section>
+
+</body>
+</html>
