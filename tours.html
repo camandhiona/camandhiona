@@ -23,7 +23,6 @@
 
   body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 15px; line-height: 1.7; }
 
-  /* ── HERO ── */
   .hero { background: var(--hero-bg); text-align: center; padding: 72px 40px 60px; position: relative; overflow: hidden; border-bottom: 1px solid #cdd6c0; }
   .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(105deg, transparent 0px, transparent 48px, rgba(107,124,92,0.045) 48px, rgba(107,124,92,0.045) 50px); pointer-events: none; }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--matcha), transparent); }
@@ -35,31 +34,35 @@
   .hero-names { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--moss); margin-bottom: 4px; }
   .hero-location { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); opacity: 0.7; }
 
-  /* ── LABELS ── */
   .section-label { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--matcha); margin-bottom: 14px; display: block; }
 
-  /* ── ABOUT ── */
   .about { max-width: 620px; margin: 0 auto; padding: 64px 32px; text-align: center; }
   .about p { color: #555048; font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
   .about p:last-child { margin-bottom: 0; }
 
-  /* ── DIVIDER ── */
   .divider { display: flex; align-items: center; gap: 16px; max-width: 680px; margin: 0 auto; padding: 0 32px; }
   .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
   .divider span { font-size: 14px; color: var(--matcha-light); opacity: 0.7; }
 
-  /* ── TOURS ── */
   .tours-header { text-align: center; padding: 56px 32px 40px; }
   .tours-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 42px); font-weight: 300; color: var(--moss); letter-spacing: 1px; }
   .tours-grid { max-width: 760px; margin: 0 auto; padding: 0 24px 48px; display: grid; gap: 20px; }
 
+  .category-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--muted); padding: 0 4px; margin-top: 12px; display: flex; align-items: center; gap: 12px; }
+  .category-label::before, .category-label::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
+
   .tour-card { background: #fff; border: 1px solid var(--divider); border-radius: 6px; padding: 36px 40px; position: relative; transition: box-shadow 0.25s, transform 0.25s; border-left: 3px solid var(--matcha-light); }
   .tour-card:hover { box-shadow: 0 8px 32px rgba(74,92,58,0.10); transform: translateY(-2px); }
+  .tour-card.featured { border-left-color: var(--cedar); }
+
   .tour-tag { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; background: #edf0e8; color: var(--matcha); padding: 4px 10px; border-radius: 2px; margin-bottom: 14px; }
+  .tour-tag.popular { background: #fdf3e3; color: #8a5e1a; }
+
   .tour-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--moss); margin-bottom: 4px; line-height: 1.2; }
   .tour-duration { font-size: 12px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .tour-desc { font-size: 14px; color: #5a5448; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
 
-  .price-block { background: #f7f4ee; border: 1px solid var(--divider); border-radius: 5px; padding: 16px 18px; margin-bottom: 18px; }
+  .price-block { background: #f7f4ee; border: 1px solid var(--divider); border-radius: 5px; padding: 16px 18px; margin-bottom: 20px; }
   .price-base { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--cedar); font-weight: 600; margin-bottom: 6px; }
   .price-base span { font-size: 13px; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
   .price-extras { list-style: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--divider); display: flex; flex-direction: column; gap: 4px; }
@@ -67,14 +70,17 @@
   .price-extras li::before { content: '+'; color: var(--matcha-light); font-weight: 600; width: 10px; flex-shrink: 0; }
   .price-extras li.child::before { content: '½'; color: var(--cedar); font-weight: 600; width: 10px; }
 
-  .best-for { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--divider); }
-  .best-for strong { color: var(--ink); }
+  .tour-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 4px; }
+  @media (max-width: 500px) { .tour-sections { grid-template-columns: 1fr; } }
 
-  .experience-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
-  .experience-list li { font-size: 13.5px; color: #5a5448; display: flex; align-items: flex-start; gap: 8px; }
-  .experience-list li::before { content: '—'; color: var(--matcha-light); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+  .tour-section h5 { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--matcha); margin-bottom: 10px; }
+  .expect-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .expect-list li { font-size: 13.5px; color: #5a5448; display: flex; align-items: flex-start; gap: 8px; }
+  .expect-list li::before { content: '—'; color: var(--matcha-light); font-size: 12px; margin-top: 2px; flex-shrink: 0; }
 
-  /* ── SERVICES ── */
+  .perfect-for { background: #edf2e8; border-radius: 5px; padding: 14px 16px; font-size: 13.5px; color: var(--moss); line-height: 1.65; }
+  .perfect-for strong { display: block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--matcha); margin-bottom: 6px; font-weight: 500; }
+
   .services-section { background: #f0f3ea; border-top: 1px solid #cdd6c0; border-bottom: 1px solid #cdd6c0; padding: 64px 32px; }
   .services-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 300; color: var(--moss); text-align: center; margin-bottom: 40px; }
   .services-grid { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
@@ -86,7 +92,6 @@
   .service-card ul li { font-size: 13px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--stone); }
   .service-card ul li:last-child { border-bottom: none; }
 
-  /* ── PRICING DETAILS ── */
   .pricing-outer { max-width: 760px; margin: 0 auto; padding: 64px 32px 32px; }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
   @media (max-width: 560px) { .pricing-grid { grid-template-columns: 1fr; } }
@@ -97,17 +102,14 @@
   .check-list .yes::before { content: '✓'; color: var(--matcha); font-weight: 700; }
   .check-list .no::before  { content: '✕'; color: var(--cedar); font-weight: 700; }
 
-  /* ── GROUP PRICING SUMMARY ── */
-  .group-pricing { background: #fff; border: 1px solid var(--divider); border-radius: 6px; padding: 28px 32px; margin-bottom: 0; border-left: 3px solid var(--matcha-light); }
+  .group-pricing { background: #fff; border: 1px solid var(--divider); border-radius: 6px; padding: 28px 32px; border-left: 3px solid var(--matcha-light); }
   .group-pricing h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--moss); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--divider); }
   .group-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--divider); font-size: 14px; }
   .group-row:last-child { border-bottom: none; }
   .group-row .who { color: #4a4840; }
   .group-row .price-note { color: var(--cedar); font-weight: 500; font-family: 'Cormorant Garamond', serif; font-size: 16px; }
   .family-note { margin-top: 16px; padding: 12px 16px; background: #edf2e8; border-radius: 4px; font-size: 13px; color: var(--moss); line-height: 1.6; }
-  .family-note em { font-style: italic; }
 
-  /* ── DEPOSIT ── */
   .deposit-section { background: var(--moss); color: var(--paper); }
   .deposit-inner { max-width: 620px; margin: 0 auto; padding: 60px 32px; text-align: center; }
   .deposit-inner .section-label { color: #b8c8a0; }
@@ -117,14 +119,12 @@
   .deposit-inner p { font-size: 14px; color: rgba(232,240,220,0.7); max-width: 420px; margin: 0 auto 16px; line-height: 1.75; }
   .deposit-note { font-size: 12px; color: rgba(232,240,220,0.45); font-style: italic; }
 
-  /* ── POLICY ── */
   .policy-grid { max-width: 760px; margin: 0 auto; padding: 48px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
   .policy-item { padding: 24px 20px; background: #fff; border: 1px solid var(--divider); border-radius: 6px; text-align: center; }
   .policy-item .policy-icon { font-size: 20px; margin-bottom: 10px; }
   .policy-item h5 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--matcha); margin-bottom: 6px; }
   .policy-item p { font-size: 13px; color: #5a5448; }
 
-  /* ── BOOKING ── */
   .booking { background: #2e3628; color: var(--paper); text-align: center; padding: 80px 32px; position: relative; overflow: hidden; }
   .booking::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(105deg, transparent 0px, transparent 48px, rgba(255,255,255,0.018) 48px, rgba(255,255,255,0.018) 50px); pointer-events: none; }
   .booking .section-label { color: #8fa07a; }
@@ -138,25 +138,20 @@
   .btn-email { background: rgba(184,200,160,0.12); color: #d4e4b8; border: 1px solid rgba(184,200,160,0.3); }
   .booking-handle { margin-top: 28px; font-size: 11px; color: rgba(232,240,220,0.25); letter-spacing: 3px; text-transform: uppercase; }
 
-  @media (max-width: 500px) {
-    .tour-card { padding: 28px 24px; }
-    .experience-list { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 500px) { .tour-card { padding: 28px 24px; } }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-flag">🇯🇵 🇺🇸</div>
   <h1>Private<br><em>Japan</em> Tours</h1>
   <p class="hero-sub">Tokyo & Beyond · Hosted by a Local Couple</p>
-  <img class="hero-photo" src="/mnt/user-data/uploads/photo.jpeg" alt="Cam and Hiona" onerror="this.style.display='none'">
+  <img class="hero-photo" src="photo.jpeg" alt="Cam and Hiona" onerror="this.style.display='none'">
   <p class="hero-names">Cam & Hiona</p>
   <p class="hero-location">Living in Tokyo · @camandhiona</p>
 </section>
 
-<!-- ABOUT -->
 <section class="about">
   <span class="section-label">About Us</span>
   <p>We're Cam and Hiona — an American from Maine and a Tokyo local who met when he was traveling Japan. Three years of long-distance later, we're finally living here together.</p>
@@ -166,7 +161,6 @@
 
 <div class="divider"><span>✦</span></div>
 
-<!-- TOUR EXPERIENCES -->
 <div class="tours-header">
   <span class="section-label">What We Offer</span>
   <h2>Tour Experiences</h2>
@@ -174,10 +168,46 @@
 
 <div class="tours-grid">
 
+  <div class="category-label">Tokyo · In-City</div>
+
+  <!-- 1. Full Day -->
   <div class="tour-card">
-    <span class="tour-tag">Tokyo · In-City</span>
+    <span class="tour-tag">Full Day</span>
+    <h3>Tokyo Full Day</h3>
+    <p class="tour-duration">⏱ 8 Hours</p>
+    <p class="tour-desc">Spend a full day exploring Tokyo with us, built entirely around what you want to experience — no fixed schedule.</p>
+    <div class="price-block">
+      <div class="price-base">¥50,000 <span>for up to 2 people</span></div>
+      <ul class="price-extras">
+        <li>¥5,000 per additional person (3rd guest and above)</li>
+        <li class="child">Children under 12 are half price</li>
+      </ul>
+    </div>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Places you've been wanting to visit</li>
+          <li>Neighborhoods that match your vibe</li>
+          <li>Food spots based on your preferences</li>
+          <li>Photo stops along the way</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          If you want a full Tokyo day planned around you — not a fixed schedule
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. First-Time Experience (Most Popular) -->
+  <div class="tour-card featured">
+    <span class="tour-tag popular">⭐ Most Popular</span>
     <h3>Tokyo First-Time Experience</h3>
     <p class="tour-duration">⏱ 4–6 Hours</p>
+    <p class="tour-desc">If it's your first time in Tokyo, this is the perfect introduction. We'll take you through the city's most exciting areas while helping you understand how everything works — from transportation to food culture.</p>
     <div class="price-block">
       <div class="price-base">¥35,000 – ¥40,000 <span>for up to 2 people</span></div>
       <ul class="price-extras">
@@ -185,19 +215,63 @@
         <li class="child">Children under 12 are half price</li>
       </ul>
     </div>
-    <div class="best-for"><span>Best for</span> <strong>First-time visitors</strong></div>
-    <ul class="experience-list">
-      <li>Famous areas + hidden spots</li>
-      <li>Local food stops</li>
-      <li>City navigation help</li>
-      <li>Cultural insights</li>
-    </ul>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Famous Tokyo areas + hidden spots</li>
+          <li>Local food stops</li>
+          <li>Help navigating the city</li>
+          <li>Cultural insights from both perspectives</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          First-time visitors who want a smooth, fun introduction to Tokyo — so you feel confident exploring on your own after
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 3. Half Day -->
   <div class="tour-card">
-    <span class="tour-tag">Tokyo · Local Life</span>
+    <span class="tour-tag">Half Day</span>
+    <h3>Tokyo Half Day</h3>
+    <p class="tour-duration">⏱ 4 Hours</p>
+    <p class="tour-desc">A shorter, more focused experience built around what you want to do — flexible and easy.</p>
+    <div class="price-block">
+      <div class="price-base">¥30,000 <span>for up to 2 people</span></div>
+      <ul class="price-extras">
+        <li>¥5,000 per additional person (3rd guest and above)</li>
+        <li class="child">Children under 12 are half price</li>
+      </ul>
+    </div>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Explore areas you're interested in</li>
+          <li>Visit spots you've been wanting to see</li>
+          <li>Food or cafe stops based on your preferences</li>
+          <li>Photos along the way</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          If you want something flexible and easy without committing to a full day
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Hidden Tokyo -->
+  <div class="tour-card">
+    <span class="tour-tag">Local Life</span>
     <h3>Hidden Tokyo: Local Life</h3>
     <p class="tour-duration">⏱ 4 Hours</p>
+    <p class="tour-desc">Experience a side of Tokyo you wouldn't usually see, through how we actually spend our time here.</p>
     <div class="price-block">
       <div class="price-base">¥35,000 <span>for up to 2 people</span></div>
       <ul class="price-extras">
@@ -205,19 +279,65 @@
         <li class="child">Children under 12 are half price</li>
       </ul>
     </div>
-    <div class="best-for"><span>Best for</span> <strong>Couples, relaxed travelers</strong></div>
-    <ul class="experience-list">
-      <li>Quiet neighborhoods</li>
-      <li>Hidden cafes</li>
-      <li>Spots we actually go to</li>
-      <li>Slower, personal experience</li>
-    </ul>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Quiet neighborhoods</li>
+          <li>Hidden cafes</li>
+          <li>Spots we actually go to</li>
+          <li>A slower, more personal experience</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          Couples and relaxed travelers who want to feel like a local, not a tourist
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 5. Neighborhood Walk -->
+  <div class="tour-card">
+    <span class="tour-tag">Short & Sweet</span>
+    <h3>Neighborhood Walk</h3>
+    <p class="tour-duration">⏱ 2–3 Hours</p>
+    <p class="tour-desc">Explore one area of Tokyo with us, the way we usually would — no rush, no rigid itinerary, just wandering.</p>
+    <div class="price-block">
+      <div class="price-base">¥20,000 <span>for up to 2 people</span></div>
+      <ul class="price-extras">
+        <li>¥5,000 per additional person (3rd guest and above)</li>
+        <li class="child">Children under 12 are half price</li>
+      </ul>
+    </div>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Walk through small streets & local spots</li>
+          <li>Stop by places that catch our attention</li>
+          <li>Grab something to eat or drink</li>
+          <li>Take photos as we go</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          If you want a local, unplanned feel and just enjoy the area without overthinking it
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-label">Day Trips</div>
+
+  <!-- 6. Kamakura -->
   <div class="tour-card">
     <span class="tour-tag">Day Trip</span>
     <h3>Kamakura & Enoshima</h3>
     <p class="tour-duration">⏱ 8 Hours</p>
+    <p class="tour-desc">A day outside the city — ancient temples, coastal scenery and island charm just an hour from Tokyo.</p>
     <div class="price-block">
       <div class="price-base">¥60,000 <span>for up to 2 people</span></div>
       <ul class="price-extras">
@@ -225,19 +345,31 @@
         <li class="child">Children under 12 are half price</li>
       </ul>
     </div>
-    <div class="best-for"><span>Best for</span> <strong>History & coastal scenery lovers</strong></div>
-    <ul class="experience-list">
-      <li>Great Buddha & temples</li>
-      <li>Coastal views</li>
-      <li>Enoshima Island</li>
-      <li>Local food & cafes</li>
-    </ul>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Great Buddha & temples</li>
+          <li>Coastal views</li>
+          <li>Enoshima Island</li>
+          <li>Local food & cafes</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          History lovers, coastal scenery fans & anyone who wants to escape the city for a day
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- 7. Hakone -->
   <div class="tour-card">
     <span class="tour-tag">Day Trip</span>
     <h3>Hakone Scenic Day</h3>
     <p class="tour-duration">⏱ 8 Hours</p>
+    <p class="tour-desc">Nature, Mt. Fuji views and pure relaxation — one of the most beautiful day trips from Tokyo.</p>
     <div class="price-block">
       <div class="price-base">¥70,000 <span>for up to 2 people</span></div>
       <ul class="price-extras">
@@ -245,13 +377,23 @@
         <li class="child">Children under 12 are half price</li>
       </ul>
     </div>
-    <div class="best-for"><span>Best for</span> <strong>Nature & Mt. Fuji views</strong></div>
-    <ul class="experience-list">
-      <li>Lake Ashi & ropeway</li>
-      <li>Scenic viewpoints</li>
-      <li>Shrines & museums</li>
-      <li>Relaxing nature spots</li>
-    </ul>
+    <div class="tour-sections">
+      <div class="tour-section">
+        <h5>What to expect</h5>
+        <ul class="expect-list">
+          <li>Lake Ashi & ropeway</li>
+          <li>Scenic viewpoints</li>
+          <li>Shrines & museums</li>
+          <li>Relaxing nature spots</li>
+        </ul>
+      </div>
+      <div class="tour-section">
+        <div class="perfect-for">
+          <strong>Perfect for</strong>
+          Nature lovers, Mt. Fuji chasers & anyone who wants to slow down and breathe
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -273,6 +415,16 @@
       </ul>
     </div>
     <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h4>Reservation Support</h4>
+      <p class="service-price">¥3,000 per request</p>
+      <ul>
+        <li>Restaurant bookings</li>
+        <li>Hard-to-book spots</li>
+        <li>Japanese-only reservations</li>
+      </ul>
+    </div>
+    <div class="service-card">
       <div class="service-icon">🗓</div>
       <h4>Custom Itinerary Planning</h4>
       <p class="service-price">¥15,000</p>
@@ -281,16 +433,6 @@
         <li>Balanced schedule</li>
         <li>Food + area recommendations</li>
         <li>Optional call support</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">📋</div>
-      <h4>Reservation Support</h4>
-      <p class="service-price">¥3,000 per request</p>
-      <ul>
-        <li>Restaurant bookings</li>
-        <li>Hard-to-book spots</li>
-        <li>Japanese-only reservations</li>
       </ul>
     </div>
   </div>
@@ -302,7 +444,6 @@
     <span class="section-label">Pricing & Details</span>
     <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,38px); font-weight:300; color:var(--moss);">What's Included</h2>
   </div>
-
   <div class="pricing-outer">
     <div class="pricing-grid">
       <div class="pricing-block">
@@ -322,8 +463,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- GROUP & CHILDREN PRICING -->
     <div class="group-pricing">
       <h3>👨‍👩‍👧‍👦 Group & Family Pricing</h3>
       <div class="group-row">
@@ -338,9 +477,7 @@
         <span class="who">Children under 12</span>
         <span class="price-note">Half price</span>
       </div>
-      <div class="family-note">
-        Every family is different — just let us know your group when you reach out and we'll make it work! 🍃
-      </div>
+      <div class="family-note">Every family is different — just let us know your group when you reach out and we'll make it work! 🍃</div>
     </div>
   </div>
 </section>
@@ -356,7 +493,7 @@
   </div>
 </section>
 
-<!-- POLICY NOTES -->
+<!-- POLICY -->
 <div class="policy-grid">
   <div class="policy-item">
     <div class="policy-icon">👥</div>
